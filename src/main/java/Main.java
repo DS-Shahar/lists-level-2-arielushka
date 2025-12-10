@@ -379,18 +379,19 @@ public class Main
     }
     public int remove(int n,int pr)
 	{
-		if(ist == null) return null;
 		int counter = 0;
-		Node<Integer> dummy = new Node<>(0, ist);
-		while(dummy.getNext() != null || n!=counter)
+		Node<Game> p = new Node<>(null, ist);
+		
+		while(p.getNext() != null && counter<n)
 		{
-			if(dummy.getNext().getValue().getPrice()==n)
+			if(p.getNext().getValue().getPrice()==pr)
 			{
-				dummy.setNext(dummy.getNext().getNext());
+				p.setNext(p.getNext().getNext());
 				counter++;
 			}
+			p = p.getNext();
 		}
-		return dummy;
+		return counter;
 	}
 
     
