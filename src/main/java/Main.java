@@ -377,6 +377,21 @@ public class Main
 
         return sortedHead;
     }
+    public int remove(int n,int pr)
+	{
+		if(ist == null) return null;
+		int counter = 0;
+		Node<Integer> dummy = new Node<>(0, ist);
+		while(dummy.getNext() != null || n!=counter)
+		{
+			if(dummy.getNext().getValue().getPrice()==n)
+			{
+				dummy.setNext(dummy.getNext().getNext());
+				counter++;
+			}
+		}
+		return dummy;
+	}
 
     
 }
