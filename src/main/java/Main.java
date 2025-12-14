@@ -1,4 +1,4 @@
-package main;
+package src;
 
 import java.util.Scanner;
 
@@ -376,23 +376,33 @@ public class Main
         }
 
         return sortedHead;
-    }
-    public int remove(int n,int pr)
-	{
-		int counter = 0;
-		Node<Game> p = new Node<>(null, ist);
-		
-		while(p.getNext() != null && counter<n)
-		{
-			if(p.getNext().getValue().getPrice()==pr)
-			{
-				p.setNext(p.getNext().getNext());
-				counter++;
-			}
-			p = p.getNext();
-		}
-		return counter;
-	}
+    } 
+    public static int tar(Node<Integer> head, int x) 
+    {
+        int index = 0;
+        int firstX = -1;
+        int lastX = -1;
 
-    
+        Node<Integer> curr = head;
+        while (curr != null)
+        {
+            if (curr.getValue() == x)
+            {
+                if (firstX == -1)
+                    firstX = index;
+                lastX = index;
+            }
+            index++;
+            curr = curr.getNext();
+        }
+
+        if (firstX == -1) return 0; 
+
+        int length = index;
+        return firstX + (length - lastX - 1);
+    }
+    public static boolean ex4(Node<Integer> head)
+    {
+    	
+    }
 }
