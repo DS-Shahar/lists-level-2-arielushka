@@ -66,11 +66,13 @@ public class Main
         Node<Integer> head1 = ex_2_1(L2_1,L2_2);
         ex2_print(head1);
         //-----------------------------------
-        int[] a2_11 = {4,5,2,1,7,4,9,2};
+        int[] a2_11 = {3,5,6,1,7,4,9,2};
         Node<Integer> p12 = ex1_builtList(a2_1);
         Node<Integer> head2 = ex_2_2(p12);
         System.out.println();
         ex2_print(head2);
+        //-----------------------------------
+        System.out.println(ex2_4(p12));
         
         
         
@@ -401,8 +403,59 @@ public class Main
         int length = index;
         return firstX + (length - lastX - 1);
     }
-    public static boolean ex4(Node<Integer> head)
+    public static boolean ex2_4(Node<Integer> head)
     {
+        while (head != null) 
+        {
+            Node<Integer> curr = head.getNext();
+            int x = head.getValue();
+
+            while (curr != null) 
+            {
+                if (curr.getValue() == x) 
+                {
+                    return false;
+                }
+                curr = curr.getNext();
+            }
+            head = head.getNext();
+        }
+        return true;
+    }
+    public static <T> int helper3(T v, Node<T> l2) 
+    {
+    	int count = 0;
+        while (l2 != null)
+        {
+            if (v.equals(l2.getValue()))
+                count++;
+            l2 = l2.getNext();
+        }
+        return count;
+    }
+    public static Node<Integer> build(Node<Integer> head)
+    {
+    	Node<Integer> curr = head;
+    	 int count = 0;
+    	 
+    	 while(curr!= null)
+    	 {
+    		 count++;
+    	 }
+    	 int []a = new int[count];
+    	 int index = 0;
+    	 while(head != null)
+    	 {
+    		 a[index] = head.getValue();
+    	 }
+    	 return ex1_builtList(a);
+    		 
     	
     }
+    public static boolean ex2_5(Node<Integer> head)
+    {
+    	Node<Integer> curr = new Node<>(0);
+    	
+    }
+
 }
