@@ -1,4 +1,5 @@
-package src;
+
+package main;
 
 import java.util.Scanner;
 
@@ -60,20 +61,24 @@ public class Main
      // ---------------------------------רמה 2------------------------------------------
         
         int[] a2_1 = {3, 5, 6, 6, 8};
-        int[] a2_2 = {1, 5,7,9,9,9};
+        int[] a2_2 = {1, 5,7,9,7,9};
         Node<Integer> L2_1 = ex1_builtList(a2_1);
         Node<Integer> L2_2 = ex1_builtList(a2_2);
         Node<Integer> head1 = ex_2_1(L2_1,L2_2);
         ex2_print(head1);
-        //-----------------------------------
+        //--------------2------------------
         int[] a2_11 = {3,5,6,1,7,4,9,2};
         Node<Integer> p12 = ex1_builtList(a2_1);
         Node<Integer> head2 = ex_2_2(p12);
         System.out.println();
         ex2_print(head2);
-        //-----------------------------------
+        //-----------------3----------------------
+        System.out.println(ex2_3(L2_2,7));
+        //----------------4------------------
         System.out.println(ex2_4(p12));
-        
+        //-------------------5------------------
+        Node<Integer> head10 = ex2_5(L2_1);
+        ex2_print(head10);
         
         
     }
@@ -379,7 +384,7 @@ public class Main
 
         return sortedHead;
     } 
-    public static int tar(Node<Integer> head, int x) 
+    public static int ex2_3(Node<Integer> head, int x) 
     {
         int index = 0;
         int firstX = -1;
@@ -398,7 +403,8 @@ public class Main
             curr = curr.getNext();
         }
 
-        if (firstX == -1) return 0; 
+        if (firstX == -1)
+        	return 0; 
 
         int length = index;
         return firstX + (length - lastX - 1);
@@ -447,15 +453,27 @@ public class Main
     	 while(head != null)
     	 {
     		 a[index] = head.getValue();
+    		 head.getNext();
+    		 index++;
     	 }
     	 return ex1_builtList(a);
-    		 
-    	
     }
-    public static boolean ex2_5(Node<Integer> head)
+
+    public static Node<Integer> ex2_5(Node<Integer> head)
     {
-    	Node<Integer> curr = new Node<>(0);
-    	
+    	Node<Integer> curr = head;
+    	Node<Integer> dummy = new Node<>(0);
+    	Node<Integer> nade = dummy;
+    	while(curr != null)
+    	{
+    		if(!ex5_num_in_list(nade,curr.getValue()))
+    		{
+    			dummy.setNext(new Node<>(curr.getValue()));
+    			dummy = dummy.getNext();
+    		}
+    		curr = curr.getNext();
+    	}
+    	return nade.getNext();
     }
 
 }
